@@ -37,7 +37,7 @@
   '((:results . "file") (:exports . "results"))
   "Default arguments for evaluatiing a mermaid source block.")
 
-(defcustom ob-mermaid-cli-path nil
+(defcustom ob-mermaid-cli-path (executable-find "mmdc")
   "Path to mermaid.cli executable."
   :group 'org-babel
   :type 'string)
