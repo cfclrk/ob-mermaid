@@ -41,6 +41,7 @@
   :type 'string)
 
 (defun org-babel-execute:mermaid (body params)
+  "Expand BODY according to PARAMS, return the expanded body."
   (let* ((out-file (or (cdr (assoc :file params))
                        (error "mermaid requires a \":file\" header argument")))
 	 (theme (cdr (assoc :theme params)))
