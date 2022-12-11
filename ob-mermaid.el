@@ -3,9 +3,8 @@
 ;; Copyright (C) 2018 Alexei Nunez
 
 ;; Author: Alexei Nunez <alexeirnunez@gmail.com>
-;; URL: https://github.com/arnm/ob-mermaid
-;; Keywords: lisp
-;; Version: 0
+;; Maintainer: Chris Clark <cfclrk@gmail.com>
+;; URL: https://github.com/cfclrk/ob-mermaid
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
