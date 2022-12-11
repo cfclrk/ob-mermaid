@@ -22,12 +22,14 @@
 ;;; Commentary:
 
 ;; Org-Babel support for evaluating mermaid diagrams.
-
-;;; Requirements:
-
-;; mermaid.cli | https://github.com/mermaidjs/mermaid.cli
+;;
+;; See documentation at https://github.com/cfclrk/ob-mermaid
+;;
+;; This package shells out to the mermaid CLI, so you must have that installed.
+;; See: https://github.com/mermaidjs/mermaid.cli.
 
 ;;; Code:
+
 (require 'ob)
 (require 'ob-eval)
 
