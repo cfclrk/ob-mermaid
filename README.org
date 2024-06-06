@@ -1,53 +1,77 @@
-
-* ob-mermaid
+#+TITLE: ob-mermaid
 
 Generate [[https://mermaidjs.github.io/][mermaid]] diagrams using org-mode, org-babel and [[https://github.com/mermaidjs/mermaid.cli][mermaid.cli]].
 
-* Setup
+* Installation
 
-If you use [[https://github.com/syl20bnr/spacemacs][Spacemacs]], use the [[https://github.com/arnm/mermaid-layer][mermaid Spacemacs layer]].
+  1. Install this package from source, as this fork is not avaialable from
+     MELPA. For example, using elpaca:
 
-1. Install package from [[https://melpa.org/#/getting-started][Melpa]]
-2. Install [[https://github.com/mermaidjs/mermaid.cli][mermaid.cli]]
-3. Specify =mmdc= executable path:
-  #+begin_src elisp
-  (setq ob-mermaid-cli-path "/your-installating-path/node_modules/.bin/mmdc")
-  #+end_src
-4. Add =mermaid= to =org-babel-load-languages=
-  #+begin_src elisp
-    (org-babel-do-load-languages
+     #+begin_src emacs-lisp
+       (use-package ob-mermaid
+         :elpaca (ob-mermaid
+                  :host github
+                  :depth nil
+                  :repo "cfclrk/ob-mermaid"))
+     #+end_src
+
+  2. Install [[https://github.com/mermaidjs/mermaid.cli][mermaid.cli]]
+
+  3. Specify =mmdc= executable path:
+
+     #+begin_src elisp
+       (setq ob-mermaid-cli-path "/your-installating-path/node_modules/.bin/mmdc")
+     #+end_src
+
+     This step isn't necessary if =(executable-find "mmdc")= already works.
+
+  4. Add =mermaid= to =org-babel-load-languages=
+
+     #+begin_src elisp
+       (org-babel-do-load-languages
         'org-babel-load-languages
         '((mermaid . t)
           (scheme . t)
           (your-other-langs . t)))
-  #+end_src
-5. Open =org-mode= buffer and create an =org-babel= source block:
-   #+begin_src org
-     ,#+begin_src mermaid :file test.png
-     sequenceDiagram
-      A-->B: Works!
-     ,#+end_src
-   #+end_src
-   #+begin_src mermaid :file test.png
-   sequenceDiagram
-    A-->B: Works!
-   #+end_src
-6. Exporting the =org-mode= document or invoking the =org-babel-execute-src-block= function to generate diagram.
+     #+end_src
 
-* Supported properties
+* Usage
 
-=file= - Output file. It should be either svg, png or pdf.
+  5. Open =org-mode= buffer and create an =org-babel= source block:
 
-=width= - Width of the page. Optional.
+     #+begin_src org
+       ,#+begin_src mermaid :file test.svg
+         sequenceDiagram
+           A-->B: Works!
+       ,#+end_src
+     #+end_src
 
-=height= - Height of the page. Optional.
+     #+begin_src mermaid :file test.svg
+       sequenceDiagram
+         A-->B: Works!
+     #+end_src
 
-=theme= - Theme of the chart, could be default, forest, dark or neutral. Optional.
+     #+RESULTS:
+     [[file:test.svg]]
 
-=background-color= - Background color. Example: transparent, red, '#F0F0F0'. Optional.
+  6. To generate the diagram, you can either evaluate the source block or export
+     the document. Note that the GitHub UI automatically renders the mermaid
+     graph in the src block, even if there is no =#+RESULTS= block.
 
-=mermaid-config-file= - JSON configuration file for mermaid. Optional.
+* Configuration
 
-=css-file= - CSS file for the page. Optional.
+  =file= - Output file. It should be either svg, png or pdf.
 
-=pupeteer-config-file= - JSON configuration file for puppeteer. Optional.
+  =width= - Width of the page. Optional.
+
+  =height= - Height of the page. Optional.
+
+  =theme= - Theme of the chart, could be default, forest, dark or neutral. Optional.
+
+  =background-color= - Background color. Example: transparent, red, '#F0F0F0'. Optional.
+
+  =mermaid-config-file= - JSON configuration file for mermaid. Optional.
+
+  =css-file= - CSS file for the page. Optional.
+
+  =pupeteer-config-file= - JSON configuration file for puppeteer. Optional.
